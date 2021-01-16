@@ -1,5 +1,51 @@
-import React from "react";
-import { AboutMeSection, AboutUsTitle, BorderImage, BottomBorder, ContactSection, Container, FirstContainer, FooterSection, ImagesContainer, LineBreak, Link, MainSection, Navbar, NeedleImage, NeedleWrapper, PageTitle, PageWrapper, ProductCard, ProductSection, TextSpan, ImagePortrait, ImagePortrait2, ImagePortrait3, ImagePortrait4, AboutUsText, ContactTitle, ContactFormContainer, ContactForm, ContactImage, ContactDataContaier, ContactDataWrapper, DataText, DataIcon, FooterTitle, LinksWrapper, HeaderPageLogo, FooterPageLogo, SocialMediaWrapper, ProductSoon } from "./business-card.page.styles";
+import React, { useState } from "react";
+import Gallery from "react-photo-gallery";
+import { materialsPhotos } from "../../src/images";
+import {
+    AboutMeSection,
+    AboutUsTitle,
+    BorderImage,
+    BottomBorder,
+    ContactSection,
+    Container,
+    FirstContainer,
+    FooterSection,
+    ImagesContainer,
+    LineBreak,
+    Link,
+    MainSection,
+    Navbar,
+    NeedleImage,
+    NeedleWrapper,
+    PageTitle,
+    PageWrapper,
+    ProductSection,
+    TextSpan,
+    ImagePortrait,
+    ImagePortrait2,
+    ImagePortrait3,
+    ImagePortrait4,
+    AboutUsText,
+    ContactTitle,
+    ContactFormContainer,
+    ContactForm,
+    ContactImage,
+    ContactDataContaier,
+    ContactDataWrapper,
+    DataText,
+    DataIcon,
+    FooterTitle,
+    LinksWrapper,
+    HeaderPageLogo,
+    FooterPageLogo,
+    SocialMediaWrapper,
+    WidthProps,
+    SecondContainer,
+    ImagesContainer2,
+    ProductsTitle,
+    ProductsWrapper
+    } from "./business-card.page.styles";
+import { ProductComponent } from "./components/products";
 
 
 export const BusinessCardPage = () => {
@@ -9,30 +55,33 @@ export const BusinessCardPage = () => {
     return (
         <PageWrapper>
             <MainSection>
-                <Navbar>
-                    <HeaderPageLogo />
-                    <LinksWrapper>
-                        <Link>O mnie</Link>
-                        <Link>Produkty</Link>
-                        <Link>Kontakt</Link>
-                    </LinksWrapper>
-                    <div />
-                </Navbar>
-                <PageTitle>Pracownia Rękodzieła Artystycznego <br />
+                <WidthProps>
+                    <Navbar>
+                        <HeaderPageLogo />
+                        <LinksWrapper>
+                            <Link href="#about">O mnie</Link>
+                            <Link href="#products">Produkty</Link>
+                            <Link href="#contact">Kontakt</Link>
+                        </LinksWrapper>
+                        <div />
+                    </Navbar>
+                    <PageTitle>Pracownia Rękodzieła Artystycznego <br />
                         Wiktoria
-                </PageTitle>
-                <div />
+                    </PageTitle>
+                    <div />
+                </WidthProps>
+
             </MainSection>
             <BorderImage />
-            <AboutMeSection>
+            <AboutMeSection id="aboutme">
                 <Container>
                     <AboutUsTitle>A zaczęło się tak...</AboutUsTitle>
                     <FirstContainer>
                         <AboutUsText>
                             Od najmłodszych lat interesowało mnie krawiectwo.
                             Miłość do szycia zaszczepiła we mnie moja babcia, nie tylko osoba uzdolniona manualnie, wspaniała gospodyni, ale także kobieta o wielkim sercu.
-                            Wiedze, którą mi przekazała wykorzystuje do dnia dzisiejszego.
-                            <TextSpan>Swoją naukę zaczynałam od szycia ręcznego,szydełkowania, robienia na drutach, haftu recznego, aż do szycia na maszynie.</TextSpan>
+                            Wiedzę, którą mi przekazała wykorzystuję do dnia dzisiejszego.
+                            <TextSpan>Swoją naukę zaczynałam od szycia ręcznego, szydełkowania, robienia na drutach, haftu ręcznego, aż do szycia na maszynie.</TextSpan>
                             <TextSpan>Spoglądając na starą maszynę Singer, wracam pamięcią do tamtych lat...
                             Wspaniałych, bajkowych i odkrywczych, gdzie każdy dzień był jak niespodzianka.</TextSpan>
                         </AboutUsText>
@@ -41,32 +90,43 @@ export const BusinessCardPage = () => {
                             <ImagePortrait2 />
                         </ImagesContainer>
                     </FirstContainer>
-                    <FirstContainer>
-                        <ImagesContainer>
+                    <SecondContainer>
+                        <ImagesContainer2>
                             <ImagePortrait3 />
                             <ImagePortrait4 />
-                            <AboutUsText>
-                                Z wykształcenia jestem technologiem odzieżowym.
-                                Po wielu latach pracy w branży odzieżowej, przekazuje wiedzę innym pasjonatom szycia.
-                                Prowadzę kursy i szkolenia, a w czasie wolnym od pracy-szyję w domu.
+                        </ImagesContainer2>
+
+                        <AboutUsText>
+                            Z wykształcenia jestem technologiem odzieżowym.
+                            Po wielu latach pracy w branży odzieżowej, przekazuję wiedzę innym pasjonatom szycia.
+                            Prowadzę kursy i szkolenia, a w czasie wolnym od pracy - szyję w domu.
                                 <TextSpan>
-                                    Dlatego prezentuje Państwu moje wyroby: torby, plecaki, kosmetyczki,maseczki,etui i inne rękodzieła z których
-                                    każda jest starannie wykonana i niepowtarzalna.
+                                Dlatego prezentuję Państwu moje wyroby: torby, plecaki, kosmetyczki, maseczki, etui i inne rękodzieła, z których
+                                każda jest starannie wykonana i niepowtarzalna.
                                 </TextSpan>
-                            </AboutUsText>
-                        </ImagesContainer>
-                    </FirstContainer>
+                        </AboutUsText>
+                    </SecondContainer>
                 </Container>
             </AboutMeSection>
             <LineBreak />
             <NeedleWrapper>
                 <NeedleImage />
             </NeedleWrapper>
-            <ProductSection>
-                <ProductSoon>Sekcja produktów zostanie wkrótce dodana...</ProductSoon>
+            <ProductSection id="products">
+                <ProductsTitle>Produkty</ProductsTitle>
+                <ProductsWrapper>
+                    <ProductComponent/>
+                </ProductsWrapper>
+            </ProductSection>
+
+            <ProductSection style={{marginTop: '4rem'}} id="materials">
+                <ProductsTitle>Tkaniny</ProductsTitle>
+                <ProductsWrapper>
+                    <Gallery photos={materialsPhotos}/>
+                </ProductsWrapper>
             </ProductSection>
             <BottomBorder />
-            <ContactSection>
+            <ContactSection id="contact">
                 <Container>
                     <ContactTitle>Kontakt</ContactTitle>
                     <ContactFormContainer>
@@ -75,7 +135,7 @@ export const BusinessCardPage = () => {
                             <ContactDataContaier>
                                 <ContactDataWrapper>
                                     <DataIcon className="fa fa-envelope" style={{ fontSize: "25px" }} />
-                                    <DataText>babciawikcia7@gmail.com</DataText>
+                                    <DataText>Babciawikcia7@gmail.com</DataText>
                                 </ContactDataWrapper>
                                 <ContactDataWrapper>
                                     <DataIcon className="fa fa-phone" style={{ fontSize: "25px" }} />
